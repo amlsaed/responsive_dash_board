@@ -25,6 +25,18 @@
 
   --box-shadow:0 2rem 3rem var(--color-light);
 }
+/* ------------------dark theme variables----------- */
+.dark-theme-variables{
+  
+  --color-white:#202528;
+  --color-dark:#edeffd;
+  --color-light:rgba(0,0,0,.4);
+  --color-dark-variant:#a3bdcc;
+  --color-background:#181a1e;
+  --box-shadow:0 2rem 3rem var(--color-light);
+}
+
+
 *{
   margin: 0;
   padding: 0;
@@ -116,7 +128,7 @@ aside{
   height: 100vh;
 }
 aside .top{
-  background-color: white;
+ 
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -513,6 +525,16 @@ main .recent-orders a{
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 300ms ease;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+}
+.right .sales-analytics .add-product:hover{
+  
+  background-color: var(--color-primary);
+  color: white;
 }
 .right .sales-analytics .add-product div{
   display: flex;
@@ -576,7 +598,7 @@ main table tbody tr td:last-child
   }
   aside{
     position: fixed;
-    left: 0;
+    left: -100%;
     background-color: var(--color-white);
     width: 18rem;
     z-index: 3;
@@ -584,7 +606,9 @@ main table tbody tr td:last-child
     height: 100vh;
     padding-right: var(--card-padding);
     display: none;
-  }
+    animation: showMenu 400ms ease forwards ;
+    -webkit-animation: showMenu 400ms ease forwards ;
+}
   aside .logo{
     margin-left: 1rem;
   }
@@ -654,4 +678,9 @@ main .recent-orders table{
   font-size: 2rem;
 }
 }
-
+/*=====================================Animation============================ */
+@keyframes showMenu{
+  to{
+    left:0;
+  }
+}

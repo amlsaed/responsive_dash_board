@@ -1,19 +1,30 @@
-const tl = gsap.timeline({ defaults: { ease: "power1.out" } });
+const sideMenu = document.querySelector("aside");
+const menuBtn = document.querySelector("#menu-btn");
+const closeBtn = document.querySelector("#close-btn");
+const themeToggler = document.querySelector(".theme-toggler");
 
-tl.to(".text", { y: "0%", duration: 1, stagger: 0.25 });
-tl.to(".slider", { y: "-100%", duration: 1.5, delay: 0.5 });
-tl.to(".intro", { y: "-100%", duration: 1 }, "-=1");
-tl.fromTo("nav", { opacity: 0 }, { opacity: 1, duration: 1 });
-tl.fromTo(".big-text", { opacity: 0 }, { opacity: 1, duration: 1 }, "-=1")
-
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.utils.toArray('.section').forEach(section => {
-  ScrollTrigger.create({
-    trigger: section,
-    start: 'top  top',
-    pin: true,
-    pinSpacing: false,
-    
-  });
+// menu control
+menuBtn.addEventListener("click",()=>{
+  sideMenu.style.display="block"
 });
+closeBtn.addEventListener("click",()=>{
+  sideMenu.style.display="none"
+})
+// change theme
+themeToggler.addEventListener("click",()=>{
+  document.body.classList.toggle("dark-theme-variables");
+  themeToggler.querySelector("span").classList.toggle('active');
+})
+// set orders
+Orders.forEach(order=>{
+  const tr =document.createElement("tr");
+  const trContent = `
+                      <td>${order.productName}</td>
+                      <td>${order.productNumber}</td>
+                      <td>${order.paymentStatus}</td>
+                      <td class="${order.shipping=='Declined'?'danger':order.shipping=='Pending'?'warning':'primary'}">${order.shipping}</td>
+                      <td>Details</td>
+                    `
+  tr.innerHTML=trContent;
+  document.querySelector('table tbody').appendChild(tr);
+})
